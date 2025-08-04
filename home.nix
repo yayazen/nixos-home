@@ -12,7 +12,6 @@
     ./hyprland
     ./kitty.nix
     ./nix.nix
-    ./vim.nix
     ./shell/zsh.nix
     ./yazi.nix
     ./programs.nix
