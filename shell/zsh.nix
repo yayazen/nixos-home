@@ -17,6 +17,8 @@
 
     shellAliases = {
       ll = "ls -l";
+
+      k = "kubectl";
     };
 
     plugins = [
@@ -27,7 +29,7 @@
       }
       {
         name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         src = pkgs.zsh-nix-shell;
       }
     ];

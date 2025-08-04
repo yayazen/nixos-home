@@ -16,6 +16,7 @@
     ./shell/zsh.nix
     ./yazi.nix
     ./programs.nix
+    ./kube.nix
   ];
 
   home.packages = [
