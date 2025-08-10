@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    wofi
     libsForQt5.dolphin
+    wl-clipboard
   ];
+
+  programs.wofi.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -11,19 +13,24 @@
     portalPackage = null;
     settings = {
       monitor = ",preferred,auto,auto";
-
+      
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$lock" = "hyprlock";
+      "$mail" = "neomutt";
+
+      exec-once = [
+        "clipse -listen"
+      ];
 
       bind = [
         "$mod, Return, exec, $terminal"
         "$mod SHIFT, A, killactive,"
-        "$mod, M, exit,"
+        "$mod SHIFT, M, exit,"
         "$mod, E, exec, $fileManager"
-        "$mod, V, togglefloating,"
+        #"$mod, V, togglefloating,"
         "$mod, R, exec, $menu"
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
@@ -31,6 +38,7 @@
         "$mod, L, exec, $lock"
 
         "$mod, Q, exec, firefox "
+        "$mod, M, exec, $terminal -e $mail"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
@@ -44,6 +52,8 @@
 
         "$mod, S, togglespecialworkspace, magic"
         "$mod SHIFT, S, movetoworkspace, special:magic"
+
+        "$mod, V, exec, $terminal --class clipse -e 'clipse'"
       ]
       ++ (builtins.concatLists (
         builtins.genList (i: [
@@ -158,6 +168,9 @@
         "float, class:^(firefox)$, title:.*Save (file|As|Image).*"
         "size 800 450, class:^(firefox)$, tile:.*Save (file|As|Image).*"
         "pin, class:^(firefox)$, title:.*Save (file|As|Image).*"
+
+        "float,class:(clipse)"
+        "size 622 652,class:(clipse)"
       ];
 
       windowrule = [

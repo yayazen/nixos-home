@@ -1,9 +1,14 @@
+{ config, pkgs, ... }:
 {
   imports = [
     ./hyprcursor.nix
-    ./hyprland.nix
     ./hyprlock.nix
+    ./hyprland.nix
     ./hyprpanel.nix
     ./hyprpaper.nix
+  ];
+
+  home.packages = with pkgs; [
+    hyprnotify
   ];
 }

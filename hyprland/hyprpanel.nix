@@ -1,7 +1,13 @@
+{ config, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   programs.hyprpanel = {
     enable = true;
     settings = {
+      scalingPriority = "hyprland";
       layout = {
         bar.layouts = {
           "0" = {

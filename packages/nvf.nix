@@ -27,6 +27,7 @@
       };
       bash.enable = true;
       yaml.enable = true;
+      clang.enable = true;
     };
   };
 }

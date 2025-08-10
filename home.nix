@@ -16,6 +16,9 @@
     ./yazi.nix
     ./programs.nix
     ./kube.nix
+    ./gpg.nix
+    ./email
+    ./taskwarrior.nix
   ];
 
   home.packages = [
