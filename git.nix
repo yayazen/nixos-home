@@ -23,8 +23,8 @@ in
   programs.git = {
     enable = true;
 
-    userName = utils.obfuscate "ltcayay";
-    userEmail = "zyx.rammam@sinay";
+    userName = utils.obfuscate "nezayay";
+    userEmail = utils.obfuscate "zyx.rammam@sinay";
 
     delta.enable = true;
     ignores = [
