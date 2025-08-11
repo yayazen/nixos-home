@@ -26,8 +26,7 @@ let
       )
     }"
 
-    notmuch new
-    afew -t -n # remove new tag and filter
+    notmuch new && afew -t -n
 
     MAIL_ID="$(notmuch search --output=threads --sort=newest-first --limit=1 tag:inbox)"
     MAIL_HEADERS="$(notmuch show --body=false --format=json ''${MAIL_ID} | jq .[0][0][0].headers)"
@@ -90,7 +89,9 @@ in
   ];
 
   programs = {
-    mbsync.enable = true;
+    mbsync = {
+      enable = true;
+    };
     msmtp.enable = true;
   };
 

@@ -15,9 +15,11 @@ in
   home.packages = [ pkgs.ghq ];
 
   home.shellAliases = {
-    gcd = ''cd "$(ghq root)/$(ghq list | ${pkgs.fzf}/bin/fzf \
-      --reverse \
-      --preview "${pkgs.glow}/bin/glow $(ghq root)/{1}/README.md 2>/dev/null")"'';
+    gcd = ''
+      repo="$(ghq list | ${pkgs.fzf}/bin/fzf \
+            --reverse \
+            --preview "CLICOLOR_FORCE=1 COLORTERM=truecolor ${pkgs.glow}/bin/glow --style=dark $(ghq root)/{1}/README.md 2>/dev/null")" \
+            && [ -n "$repo" ] && cd "$(ghq root)/$repo"'';
   };
 
   programs.git = {
