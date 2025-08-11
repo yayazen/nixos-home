@@ -29,7 +29,7 @@ in
         --prompt="Tab to search GH repos > " \
         --preview "[ -n '{}' ] && gh repo view {} | CLICOLOR_FORCE=1 COLORTERM=truecolor ${pkgs.glow}/bin/glow --style=dark" \
         --bind "ctrl-w:execute-silent([ -n '{}' ] && gh repo view {} -w)" \
-        --bind "tab:reload(gh search repos \$(echo {q}) --json fullName -q '.[].fullName')+clear-query" \
+        --bind "tab:reload([ -n '{q}' ] && gh search repos \$(echo {q}) --json fullName -q '.[].fullName')+clear-query" \
         --bind "enter:become([ -n '{}' ] && ${pkgs.gum}/bin/gum confirm 'Clone {} ?' && gh repo view {} --json sshUrl -q '.sshUrl' | ghq get -u)"
     '';
   };
