@@ -23,7 +23,7 @@ in
         && [ -n "$repo" ] && cd "$(ghq root)/$repo"'';
 
     # search and clone github repositories
-    ghcl = ''
+    gcl = ''
       echo | ${pkgs.fzf}/bin/fzf \
         --reverse \
         --prompt="Tab to search GH repos > " \
