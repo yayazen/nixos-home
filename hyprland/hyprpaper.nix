@@ -1,3 +1,6 @@
+let
+  wallpaper = ./nix-wallpaper.png;
+in
 {
   services.hyprpaper = {
     enable = true;
@@ -5,11 +8,11 @@
       ipc = "off";
       splash = false;
       preload = [
-        "${./wallpaper.png}"
+        "${wallpaper}"
       ];
 
       wallpaper = [
-        ",${./wallpaper.png}"
+        ",${wallpaper}"
       ];
     };
   };

@@ -8,7 +8,7 @@ let
   utils = import ./utils { inherit lib; };
 
   signingKeys = {
-    nixos = "096108F8E887C988!";
+    nixos = "7BD1E6405C0BA03D!";
   };
 in
 {
@@ -34,20 +34,14 @@ in
     '';
   };
 
+  programs.delta.enable = true;
+
   programs.git = {
     enable = true;
 
-    userName = utils.obfuscate "nezayay";
-    userEmail = utils.obfuscate "zyx.rammam@sinay";
-
-    delta.enable = true;
-    ignores = [
-      ".direnv"
-    ];
-
-    signing.key = signingKeys.nixos; # TODO import it from nixOS config somehow
-
-    extraConfig = {
+    settings = {
+      user.name = utils.obfuscate "nezayay";
+      user.email = utils.obfuscate "zyx.rammam@sinay";
       init.defaultBranch = "master";
       ghq = {
         root = "~/dev";
@@ -55,6 +49,12 @@ in
       push.autoSetupRemote = true;
       commit.gpgSign = true;
     };
+
+    ignores = [
+      ".direnv"
+    ];
+
+    signing.key = signingKeys.nixos; # TODO import it from nixOS config somehow
   };
 
   programs.gh = {

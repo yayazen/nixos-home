@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    libsForQt5.dolphin
+    #libsForQt5.dolphin
     wl-clipboard
   ];
 
@@ -26,6 +26,9 @@
       ];
 
       bind = [
+        # Fun
+        "$mod SHIFT, P, exec, ${pkgs.sox}/bin/play ~/Downloads/piccolo-aura.mp3" 
+        
         "$mod, Return, exec, $terminal"
         "$mod SHIFT, A, killactive,"
         "$mod SHIFT, M, exit,"
@@ -33,9 +36,12 @@
         #"$mod, V, togglefloating,"
         "$mod, R, exec, $menu"
         "$mod, P, pseudo, # dwindle"
-        "$mod, J, togglesplit, # dwindle"
+        #"$mod, J, togglesplit, # dwindle"
         "$mod, F, fullscreen"
         "$mod, L, exec, $lock"
+        "$mod, G, togglegroup"
+        "$mod, TAB, changegroupactive, f"
+        "$mod SHIFT, TAB, changegroupactive, b"
 
         "$mod, Q, exec, firefox "
         "$mod, M, exec, $terminal -e $mail"
@@ -151,7 +157,7 @@
       };
 
       dwindle = {
-        pseudotile = true;
+        #pseudotile = true;
         preserve_split = true;
       };
 
@@ -164,19 +170,28 @@
         disable_hyprland_logo = true;
       };
 
-      windowrulev2 = [
-        "float, class:^(firefox)$, title:.*Save (file|As|Image).*"
-        "size 800 450, class:^(firefox)$, tile:.*Save (file|As|Image).*"
-        "pin, class:^(firefox)$, title:.*Save (file|As|Image).*"
-
-        "float,class:(clipse)"
-        "size 622 652,class:(clipse)"
-      ];
-
       windowrule = [
-        "suppressevent maximize, class:.*"
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        {
+          name = "wr1";
+          float = "on";
+          pin = "on";
+          size = "800 450";
+          center = "on";
+          "match:class" = "^(xdg-desktop-portal-gtk)$";
+          "match:title" = "Save (file|As|Image).*";
+        }
+        #"float, class:^(firefox)$, title:.*Save (file|As|Image).*"
+        #"size 800 450, class:^(firefox)$, tile:.*Save (file|As|Image).*"
+        #"pin, class:^(firefox)$, title:.*Save (file|As|Image).*"
+
+        #"float,class:(clipse)"
+        #"size 622 652,class:(clipse)"
       ];
+
+      #windowrule = [
+      #  "suppressevent maximize, class:.*"
+      #  "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+      #];
     };
   };
 

@@ -11,6 +11,7 @@ in
   programs.firefox = {
     enable = true;
     languagePacks = [ "fr" ];
+    configPath = "${config.xdg.configHome}/mozilla/firefox"; 
     profiles.default = {
       isDefault = true;
       settings = {

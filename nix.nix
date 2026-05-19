@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     lix
-    nixfmt-rfc-style
+    nixfmt
     nix-output-monitor
   ];
 }
