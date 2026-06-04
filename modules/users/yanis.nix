@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 let
   username = "yanis";
 in
@@ -16,8 +16,13 @@ in
     };
   };
 
-  flake.homeModules."${username}" = {
+  flake.homeModules."${username}" = { config, ... }: {
     home.username = username;
-    home.homeDirectory = "/home/${username}";
+    home.homeDirectory = "/home/${config.home.username}";
+
+    programs.git.settings = {
+      user.name = self.lib.obfuscate "nezayay";
+      user.email = self.lib.obfuscate "zyx.rammam@sinay";
+    };
   };
 }

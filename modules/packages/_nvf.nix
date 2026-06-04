@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   vim = {
     theme = {
@@ -16,15 +15,8 @@
     telescope.enable = true;
     autocomplete.nvim-cmp.enable = true;
     navigation.harpoon.enable = true;
-
-    extraPlugins = with pkgs.vimPlugins; {
-      claudecode = {
-        package = claudecode-nvim;
-        setup = "require('claudecode').setup {}";
-      };
-    };
-
     lsp.enable = true;
+
     languages = {
       enableTreesitter = true;
       enableFormat = true;
