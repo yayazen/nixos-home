@@ -1,5 +1,5 @@
 _: {
-  flake.nixosModules.hardware.bluetooth = {
+  flake.nixosModules.bluetooth = {
       # bluetooth services
       services.blueman.enable = true;
       hardware.bluetooth.enable = true;

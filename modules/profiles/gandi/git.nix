@@ -14,7 +14,7 @@
         signing.key = gandi.signingKey;
       };
 
-      # gitla
+      # gitlab
       home.packages = [ pkgs.glab ];
 
       home.sessionVariables = {

@@ -81,7 +81,7 @@
       };
 
       services.imapnotify.enable = true;
-      services.dunst.enable = true;
+      #services.dunst.enable = true;
 
       accounts.email = {
         maildirBasePath = lib.mkDefault "mail";

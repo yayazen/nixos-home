@@ -1,13 +1,14 @@
 { self, ... }:
 let
   username = "yanis";
+  fullname = "Yanis Mammar";
 in
 {
   flake.nixosModules."${username}" = {
     users.users."${username}" = {
       isNormalUser = true;
       home = "/home/${username}";
-      description = "Yanis Mammar";
+      description = fullname;
       extraGroups = [
         "wheel"
         "networkmanager"
@@ -16,13 +17,43 @@ in
     };
   };
 
-  flake.homeModules."${username}" = { config, ... }: {
-    home.username = username;
-    home.homeDirectory = "/home/${config.home.username}";
+  flake.homeModules."${username}" =
+    { config, ... }:
+    {
+      home.username = username;
+      home.homeDirectory = "/home/${config.home.username}";
 
-    programs.git.settings = {
-      user.name = self.lib.obfuscate "nezayay";
-      user.email = self.lib.obfuscate "zyx.rammam@sinay";
+      programs.git = {
+        settings = {
+          user.name = self.lib.obfuscate "nezayay";
+          user.email = self.lib.obfuscate "zyx.rammam@sinay";
+        };
+        signing.key = "7BD1E6405C0BA03D!";
+      };
+
+      imports = with self.homeModules; [
+          home-manager
+          
+          fonts
+          niri
+
+          lix
+          nix-tools
+
+          firefox
+          taskwarrior
+          #email
+
+          kitty
+          shell
+          nvim
+          yazi
+          git
+          git-custom-aliases
+          gpg
+          direnv
+          password-store
+          ssh
+      ];
     };
-  };
 }

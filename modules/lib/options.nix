@@ -9,7 +9,7 @@ in
         type = types.anything;
         default = { };
         description = ''
-          Lib functions.
+         Functions used in my config.
         '';
       };
     };

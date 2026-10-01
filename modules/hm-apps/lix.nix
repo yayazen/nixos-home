@@ -2,6 +2,10 @@ _: {
   flake.homeModules.lix =
     { pkgs, ... }:
     {
+      home.packages = [
+        pkgs.lix
+      ];
+
       nix = {
         package = pkgs.lix;
         settings = {
