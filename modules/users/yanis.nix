@@ -28,21 +28,18 @@ in
           user.name = self.lib.obfuscate "nezayay";
           user.email = self.lib.obfuscate "zyx.rammam@sinay";
         };
-        signing.key = "7BD1E6405C0BA03D!";
+        #signing.key = "7BD1E6405C0BA03D!";
       };
 
       imports = with self.homeModules; [
           home-manager
           
           fonts
-          niri
 
           lix
           nix-tools
 
           firefox
-          taskwarrior
-          #email
 
           kitty
           shell
@@ -51,7 +48,6 @@ in
           git
           git-custom-aliases
           gpg
-          direnv
           password-store
           ssh
       ];
